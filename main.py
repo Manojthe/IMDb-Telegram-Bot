@@ -76,7 +76,7 @@ def handle_callback_query(call):
         # Prepare InlineKeyboardMarkup with two buttons
         keyboard = InlineKeyboardMarkup()
         imdb_button = InlineKeyboardButton("Check IMDB", url=f"https://www.imdb.com/title/tt{movie_id}/")
-        download_button = InlineKeyboardButton("Download Movie", url="https://t.me/botsupports_og")
+        download_button = InlineKeyboardButton("Download Movie", url="https://t.me/Downloader_TGBot")
         keyboard.add(imdb_button, download_button)
 
         if poster_url:

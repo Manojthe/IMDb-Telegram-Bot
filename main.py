@@ -9,11 +9,11 @@ bot = telebot.TeleBot(TOKEN)
 def send_welcome(message):
     keyboard = InlineKeyboardMarkup()
     row1 = [
-        InlineKeyboardButton("Button 1", callback_data='button1'),
-        InlineKeyboardButton("Button 2", callback_data='button2')
+        InlineKeyboardButton("Support", callback_data='button1'),
+        InlineKeyboardButton("Group", callback_data='button2')
     ]
     keyboard.add(*row1)
-    keyboard.add(InlineKeyboardButton("Button 3", callback_data='button3'))
+    keyboard.add(InlineKeyboardButton("🍿 Updates", callback_data='button3'))
     bot.send_photo(chat_id=message.chat.id, photo=PIC, caption=CAPTION, parse_mode='HTML', reply_markup=keyboard)
 
 @bot.message_handler(commands=['movie'])

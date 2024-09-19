@@ -9,8 +9,8 @@ bot = telebot.TeleBot(TOKEN)
 def send_welcome(message):
     keyboard = InlineKeyboardMarkup()
     row1 = [
-        InlineKeyboardButton("Channel", callback_data='button1'),
-        InlineKeyboardButton("Group", callback_data='button2')
+        InlineKeyboardButton("Channel", url='https://t.me/botsupports_og'),
+        InlineKeyboardButton("Group", url='https://t.me/+uetvaBu_d5k5MTU1')
     ]
     keyboard.add(*row1)
     keyboard.add(InlineKeyboardButton("🍿 Updates", url='https://t.me/Hollywood_in_HindiHD'))

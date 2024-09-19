@@ -57,15 +57,15 @@ def handle_callback_query(call):
         # Create the movie info string with HTML formatting
         movie_info = (
             f"🎪 <b>Movie:</b> {title}\n"
-            f"🏆 <b>User Ratings:</b> {rating}\n"
-            f"🗓 <b>Release Info:</b> {year}\n"
-            f"🕰 <b>Duration:</b> {duration}\n"
-            f"🎧 <b>Language:</b> {languages}\n"
-            f"🎭 <b>Genres:</b> {genres}\n"
-            f"📋 <b>Storyline:</b> <i>{plot}</i>\n"
-            f"🎥 <b>Director:</b> {directors}\n"
-            f"🎎 <b>Actors:</b> {actors}\n"
-            f"✍️ <b>Writers:</b> {writers}\n"
+            f"🏆 <b>User Ratings:</b> {rating}\n\n"
+            f"🗓 <b>Release Info:</b> {year}\n\n"
+            f"🕰 <b>Duration:</b> {duration}\n\n"
+            f"🎧 <b>Language:</b> {languages}\n\n"
+            f"🎭 <b>Genres:</b> {genres}\n\n"
+            f"📋 <b>Storyline:</b> <tg-spoiler><i>{plot}</i></tg-spoiler>\n\n"
+            f"🎥 <b>Director:</b> {directors}\n\n"
+            f"🎎 <b>Actors:</b> {actors}\n\n"
+            f"✍️ <b>Writers:</b> {writers}\n\n"
         )
 
         # Truncate caption if too long

@@ -7,5 +7,5 @@ CAPTION = '''<b>This is Caption boss</b>
 PIC = 'https://envs.sh/qb0.jpg'
 
 # IMDb API details (not directly used in the code, but included for completeness)
-API_ID = 
-API_HASH = ''
+API_ID = 9411723
+API_HASH = '30fa091455c0548d77dc254f0bb705b0'

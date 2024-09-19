@@ -14,7 +14,7 @@ def send_welcome(message):
     ]
     keyboard.add(*row1)
     keyboard.add(InlineKeyboardButton("Button 3", callback_data='button3'))
-    bot.send_photo(chat_id=message.chat.id, photo=PIC, caption=CAPTION, reply_markup=keyboard)
+    bot.send_photo(chat_id=message.chat.id, photo=PIC, caption=CAPTION, parse_mode='HTML', reply_markup=keyboard)
 
 @bot.message_handler(commands=['movie'])
 def handle_movie_command(message):
@@ -54,7 +54,7 @@ def handle_callback_query(call):
         writers = movie_details['writers']
         poster_url = movie_details['poster_url']
 
-        # Create the movie info string
+        # Create the movie info string with HTML formatting
         movie_info = (
             f"🎪 <b>Movie:</b> {title}\n"
             f"🏆 <b>User Ratings:</b> {rating}\n"

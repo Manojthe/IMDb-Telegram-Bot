@@ -9,3 +9,7 @@ PIC = 'https://envs.sh/qb0.jpg'
 # IMDb API details (not directly used in the code, but included for completeness)
 API_ID = 9411723
 API_HASH = '30fa091455c0548d77dc254f0bb705b0'
+
+
+CHANNEL_1 = '@botsupports_og'   # Replace with your first channel username
+CHANNEL_2 = '@Hollywood_in_HindiHD'   # Replace with your second channel username

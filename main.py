@@ -1,11 +1,31 @@
 import telebot
 from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
-from info import TOKEN, CAPTION, PIC, API_ID, API_HASH
+from info import TOKEN, CAPTION, PIC
 from IMDb import search_movies, fetch_movie_details
+from membership import check_membership as check_user_membership
 
+# Initialize the bot
 bot = telebot.TeleBot(TOKEN)
 
+# Decorator to check membership
+def membership_required(func):
+    def wrapper(message):
+        # Run the membership check synchronously
+        missing_channels = check_user_membership(bot, message)
+        
+        if missing_channels is None:  # User is a member of both channels
+            return func(message)  # Call the original command function
+        else:
+            # Constructing an inline keyboard to show missing channels
+            keyboard = InlineKeyboardMarkup()
+            for channel in missing_channels:
+                keyboard.add(InlineKeyboardButton(channel, url=f'https://t.me/{channel.strip("@")}'))
+            bot.send_message(message.chat.id, "You are not a member of the following channels:", reply_markup=keyboard)
+
+    return wrapper
+
 @bot.message_handler(commands=['start'])
+@membership_required
 def send_welcome(message):
     keyboard = InlineKeyboardMarkup()
     row1 = [
@@ -17,10 +37,12 @@ def send_welcome(message):
     bot.send_photo(chat_id=message.chat.id, photo=PIC, caption=CAPTION, parse_mode='HTML', reply_markup=keyboard)
 
 @bot.message_handler(commands=['movie'])
+@membership_required
 def handle_movie_command(message):
     bot.send_message(message.chat.id, "Send me a movie name to get details.")
 
 @bot.message_handler(func=lambda message: True)
+@membership_required
 def handle_message(message):
     query = message.text
     if query:
@@ -37,6 +59,7 @@ def handle_message(message):
             bot.send_message(message.chat.id, "No results found.")
 
 @bot.callback_query_handler(func=lambda call: True)
+@membership_required
 def handle_callback_query(call):
     movie_id = call.data
     movie_details = fetch_movie_details(movie_id)

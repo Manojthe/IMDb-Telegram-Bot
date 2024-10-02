@@ -20,7 +20,7 @@ def membership_required(func):
             keyboard = InlineKeyboardMarkup()
             for channel in missing_channels:
                 keyboard.add(InlineKeyboardButton(channel, url=f'https://t.me/{channel.strip("@")}'))
-            bot.send_message(message.chat.id, "You are not a member of the following channels:", reply_markup=keyboard)
+            bot.send_message(message.chat.id, "⚠️ Attention Required!\nIt seems you're missing out on some important channels!\nTo proceed, please join the following channels:\n\n🌐 Due to high server activity, we need you to ensure membership in the channels below to continue enjoying our services::", reply_markup=keyboard)
 
     return wrapper
 
